@@ -1,0 +1,48 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<configuration>
+	<property name="log.base" value="${catalina.base}/logs/ais" />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<file>${catalina.base}/logs/catalina.out</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.base}/logs/catalina.out.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.base}/info.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.base}/info.log.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+		<layout>
+			<pattern>{"_time":"%d{yyyy-MM-dd HH:mm:ss.SSS}","_level":"%p","_thread":"%t","_file":"%F","_method":"%M","_line":"%L","_content":%m}%n</pattern>
+		</layout>
+	</appender>
+
+	<appender name="api" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.base}/api.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.base}/api.log.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+		<layout>
+			<pattern>{"_time":"%d{yyyy-MM-dd HH:mm:ss.SSS}","_level":"%p","_thread":"%t","_file":"%F","_method":"%M","_line":"%L","_content":"%m","_ip":"%X{ip}","_ua":"%X{ua}"}%n</pattern>
+		</layout>
+	</appender>
+	
+
+	<logger name="console" level="DEBUG" additivity="false">
+		<appender-ref ref="console" />
+	</logger>
+	
+	<logger name="api" level="DEBUG" additivity="false">
+		<appender-ref ref="api" />
+	</logger>
+	
+	<root level="INFO">
+		<appender-ref ref="rollingFile" />
+	</root>
+
+</configuration>

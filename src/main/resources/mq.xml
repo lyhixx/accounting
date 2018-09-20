@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/rabbit
+     http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd">
+	<!--配置connection-factory，指定连接rabbit server参数 -->
+	<rabbit:connection-factory id="connectionFactory_account"
+		username="${mq.username}" password="${mq.password}" host="${mq.host}" port="${mq.port}" virtual-host="${mq.vhost.pay}"/>
+	
+	<!--定义rabbit template用于数据的接收和发送 -->
+	<rabbit:template id="amqpTemplate_account"  connection-factory="connectionFactory_account" 
+	    exchange="${mq.exchange.account}" />
+
+	<!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
+	<rabbit:admin connection-factory="connectionFactory_account" />
+	
+	<bean id="mqListener" class="com.axdoc.ais.mq.MqListener" />
+	
+	<!--  队列监听 消费只关注到队列即可 -->
+	<rabbit:listener-container connection-factory="connectionFactory_account" >
+		<rabbit:listener ref="mqListener" queue-names="${mq.queue.account}" />
+	</rabbit:listener-container>
+	
+	<bean id="msgServiceFactory" class="com.axdoc.ais.mq.service.MsgServiceFactory" init-method="init" >
+		 <property name="services">
+			<map>
+				<entry key="com.axdoc.mq.message.PaySuccessMessage" value-ref="paySuccessService" />
+			</map>
+		</property> 
+	</bean>
+</beans>
