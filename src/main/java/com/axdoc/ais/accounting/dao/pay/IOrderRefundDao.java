@@ -1,8 +1,8 @@
-package com.axdoc.ais.accounting.dao;
+package com.axdoc.ais.accounting.dao.pay;
 
 import java.util.List;
 
-import com.axdoc.ais.accounting.entity.PayOrderRefund;
+import com.axdoc.ais.accounting.entity.pay.PayOrderRefund;
 
 /**
  * 退款表dao

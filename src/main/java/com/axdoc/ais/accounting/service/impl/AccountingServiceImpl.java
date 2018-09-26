@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.axdoc.ais.accounting.dao.IOrderDao;
-import com.axdoc.ais.accounting.entity.PayOrder;
+import com.axdoc.ais.accounting.dao.pay.IOrderDao;
+import com.axdoc.ais.accounting.entity.pay.PayOrder;
 import com.axdoc.ais.accounting.exceptions.AccountingException;
 import com.axdoc.ais.accounting.service.AccountingService;
 import com.axdoc.common.utils.LoggerUtil;

@@ -1,4 +1,4 @@
-package com.axdoc.ais.accounting.entity;
+package com.axdoc.ais.accounting.entity.pay;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;

@@ -1,9 +1,9 @@
-package com.axdoc.ais.accounting.dao;
+package com.axdoc.ais.accounting.dao.pay;
 
 import java.util.List;
 
-import com.axdoc.ais.accounting.entity.PayOrder;
-import com.axdoc.ais.accounting.entity.PayOrderChart;
+import com.axdoc.ais.accounting.entity.pay.PayOrder;
+import com.axdoc.ais.accounting.entity.pay.PayOrderChart;
 
 /**
  * 订单

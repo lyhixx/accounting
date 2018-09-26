@@ -1,4 +1,4 @@
-package com.axdoc.ais.accounting.dao.impl;
+package com.axdoc.ais.accounting.dao.pay.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,8 +11,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
-import com.axdoc.ais.accounting.dao.IOrderRefundDao;
-import com.axdoc.ais.accounting.entity.PayOrderRefund;
+import com.axdoc.ais.accounting.dao.pay.IOrderRefundDao;
+import com.axdoc.ais.accounting.entity.pay.PayOrderRefund;
 
 @Repository
 public class OrderRefundDaoImpl implements IOrderRefundDao {

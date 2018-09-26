@@ -1,4 +1,4 @@
-package com.axdoc.ais.accounting.dao.impl;
+package com.axdoc.ais.accounting.dao.pay.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,9 +12,9 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import com.axdoc.ais.accounting.dao.IOrderDao;
-import com.axdoc.ais.accounting.entity.PayOrder;
-import com.axdoc.ais.accounting.entity.PayOrderChart;
+import com.axdoc.ais.accounting.dao.pay.IOrderDao;
+import com.axdoc.ais.accounting.entity.pay.PayOrder;
+import com.axdoc.ais.accounting.entity.pay.PayOrderChart;
 
 @Component("orderDao")
 public class OrderDaoImpl implements IOrderDao {
